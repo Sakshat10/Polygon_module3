@@ -11,16 +11,17 @@ template MyCircuit () {
     component andGate = AND();
     component notGate = NOT();
 
-    orGate.a <== a;
-    orGate.b <== b;
-    x <== orGate.out;
-
-    andGate.a <== x;
+    andGate.a <== a;
     andGate.b <== b;
-    y <== andGate.out;
+    x <== andGate.out;
 
-    notGate.in <== y;
-    q <== notGate.out;
+    notGate.in <== b;
+    y <== notGate.out;
+
+    orGate.a <== x;
+    orGate.b <== y;
+    q <== andGate.out;
+
 }
 
 template OR() {
